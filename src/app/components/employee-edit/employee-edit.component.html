@@ -1,0 +1,7 @@
+<a routerLink = "/employee">Back To List</a>
+<form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+  Name: <input type="text" formControlName="name">
+  Company: <input type="text" formControlName="company">
+  Location: <input type="text" formControlName="location">
+  <button type="submit">SUBMIT</button>
+</form>

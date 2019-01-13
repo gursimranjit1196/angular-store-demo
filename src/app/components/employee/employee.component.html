@@ -1,0 +1,29 @@
+<a routerLink="/">Home</a>
+<form [formGroup] = "empForm" (ngSubmit) = "onFormSubmit()">
+  Name: <input type="text" formControlName = "name">
+  Company: <input type="text" formControlName = "company">
+  Location: <input type="text" formControlName = "location">
+  <button type="submit">SUBMIT</button>
+</form>
+<h2>EMPLOYEES</h2>
+<table>
+  <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Company</th>
+    <th>Location</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let k of employees | keys">
+      <td>{{employees[k].id}}</td>
+      <td>{{employees[k].name}}</td>
+      <td>{{employees[k].company}}</td>
+      <td>{{employees[k].location}}</td>
+      <td><a [routerLink] = "[employees[k].id, 'edit']">Edit</a></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<router-outlet></router-outlet>
