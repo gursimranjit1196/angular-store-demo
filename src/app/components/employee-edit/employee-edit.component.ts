@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EmployeeService } from 'src/app/services/employee.service';
+
 
 @Component({
   selector: 'app-employee-edit',
@@ -16,8 +16,7 @@ export class EmployeeEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
-    private employeeServie: EmployeeService
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -43,15 +42,6 @@ export class EmployeeEditComponent implements OnInit {
   }
 
   getEmployeeById() {
-    this.employeeServie.getEmployeeById(this.id).subscribe(
-      (emp) => {
-        this.employee = emp
-        this.setFormValue()
-      },
-      error => {
-        alert(error)
-      }
-    )
   }
 
   setFormValue() {
@@ -63,8 +53,6 @@ export class EmployeeEditComponent implements OnInit {
   }
 
   onFormSubmit() {
-    this.employeeServie.editEmployeeById(this.id, this.empForm.value)
-    this.router.navigate(["/employee"])
   }
 
 }

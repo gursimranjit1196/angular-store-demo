@@ -11,10 +11,8 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { appRoutes } from "./app.routes";
 
 // Store
-import { reducer } from "./app.reducers";
+import { appReducer } from "./store";
 
-//Services
-import { EmployeeService } from './services/employee.service';
 
 import { SharedModule } from './modules/shared/shared.mobule';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
@@ -31,10 +29,9 @@ import { EmployeeEditComponent } from './components/employee-edit/employee-edit.
     SharedModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    StoreModule.forRoot(reducer)
+    StoreModule.forRoot(appReducer)
   ],
   providers: [
-    EmployeeService
   ],
   bootstrap: [AppComponent]
 })

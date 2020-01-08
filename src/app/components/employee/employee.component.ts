@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { EmployeeService } from 'src/app/services/employee.service';
 import { FormGroup, FormControl } from '@angular/forms';
+
+// Store
+import { Store } from '@ngrx/store';
+import { AppState, getEmployeeList } from '../../store';
 
 @Component({
   selector: 'app-employee',
@@ -14,7 +17,7 @@ export class EmployeeComponent implements OnInit {
   public empForm: FormGroup
 
   constructor(
-    private employeeService: EmployeeService
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
@@ -23,15 +26,12 @@ export class EmployeeComponent implements OnInit {
   }
 
   getEmployee() {
-
-    this.employeeService.getEmployeeList().subscribe(
+    this.store.select(getEmployeeList).subscribe(
       (employees) => {
         this.employees = employees
       },
-      (error) => {
-        alert(error)
-      }
     )
+    
   }
 
   setEmpForm() {
@@ -43,7 +43,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   onFormSubmit() {
-    this.employeeService.addEmployeeInList(this.empForm.value)
   }
 
 }

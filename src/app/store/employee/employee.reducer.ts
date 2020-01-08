@@ -3,12 +3,14 @@ import { EmployeeAction } from "./employee.actions";
 import { EMPLOYEE_ACTIONS } from "../../constants/store";
 import { EMPLOYEES_LIST } from "../../constants/employee-list";
 
-export interface State {
+export interface EmployeeState {
   EmployeeList: object
+  Loading: boolean
 }
 
 const initialState = {
-  EmployeeList: EMPLOYEES_LIST
+  EmployeeList: EMPLOYEES_LIST,
+  Loading: false
 }
 
 export function EmployeeReducer(state = initialState, action: EmployeeAction) {
